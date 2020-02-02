@@ -6,6 +6,5 @@
 #=================================================
 # Modify default IP
 sed -i 's/192.168.1.1/10.10.10.10/g' openwrt/package/base-files/files/bin/config_generate
-sed -i 's/192.168.1.1/10.10.10.10/g' /package/base-files/files/bin/config_generate
 # Modify Firmware Version
-#sed -i 's/<%=pcdata(ver.distname)%> <%=pcdata(ver.distversion)%>/<%=pcdata(ver.distname)%> <%=pcdata(ver.distversion)%> <%:compiled by ZIF%>/g' /package/lean/autocore/files/index.htm
+sed -i 's/<%=pcdata(ver.distname)%> <%=pcdata(ver.distversion)%>/<%=pcdata(ver.distname)%> <%=pcdata(ver.distversion)%> <%:compiled by ZIF%>/g' openwrt/package/lean/autocore/files/index.htm
