@@ -91,23 +91,8 @@ jobs:
         echo -e "$(nproc) thread build."
         make -j$(nproc) V=s
 
-     - name: Upload bin directory
+    - name : Upload artifact
       uses: actions/upload-artifact@master
-      if: always()
       with:
-        name: OpenWrt_bin
+        name: OpenWrt
         path: openwrt/bin
-
-    - name: Organize files
-      if: always()
-      run: |
-        cd openwrt/bin/targets/*/*
-        rm -rf packages
-        echo "::set-env name=FIRMWARE::$(pwd)"
-
-    - name: Upload firmware
-      uses: actions/upload-artifact@master
-      if: always()
-      with:
-        name: OpenWrt_firmware
-        path: ${{ env.FIRMWARE }}
