@@ -11,9 +11,9 @@ on:
   release:
     types: [published]
 
-  #push:
-  #  branches: 
-  #    - master
+  push:
+    branches: 
+      - master
 
   #schedule:
   #  - cron: 0 8 * * 5
@@ -69,9 +69,10 @@ jobs:
       run: |
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        ./scripts/feeds install -a
         sed -i 's/4.19/4.14/g' openwrt/target/linux/x86/Makefile
         git pull
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
 
     - name: Configuration Customization - Build_x86_64
       env:
